@@ -33,6 +33,13 @@ function keys:init(args)
         awful.key({ mod, "Shift" }, "q", function(c) c:kill() end,
                   { description = "Close client", group = "Client" })
     )
+
+    -- Defining mouse buttons for clients
+    self.clientbuttons = gears.table.join(
+        awful.button({ }, 1, function (c)
+            c:emit_signal("request::activate", "mouse_click", {raise = true})
+        end)
+    )
 end
 
 return keys

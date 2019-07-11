@@ -5,6 +5,7 @@ rules = {}
 
 function rules:init(args)
     local clientkeys = args.keys.clientkeys
+    local clientbuttons = args.keys.clientbuttons
 
     awful.rules.rules =
         {
@@ -12,7 +13,8 @@ function rules:init(args)
                 rule = {},
                 properties = {
                     raise = true,
-                    keys = clientkeys
+                    keys = clientkeys,
+                    buttons = clientbuttons
                 }
             }
         }
