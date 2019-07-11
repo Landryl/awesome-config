@@ -30,7 +30,7 @@ function keys:init(args)
 
     -- Defining keybinding for clients
     self.clientkeys = gears.table.join(
-        awful.key({ mod, "Shift" }, "q", function(c) c:kill() end,
+        awful.key({ mod, "Shift" }, "a", function(c) c:kill() end,
                   { description = "Close client", group = "Client" })
     )
 
