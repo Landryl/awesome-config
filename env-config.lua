@@ -9,6 +9,17 @@ function env:init()
     self.editor = os.getenv("EDITOR") or "nano"
     self.editor_cmd = self.terminal .. " -e " .. self.editor
     self.home = os.getenv("HOME")
+    self.tags = {
+        "terms",
+        "web",
+        "dev",
+        "doc",
+        "gimp",
+        "music",
+        "keepass",
+        "background",
+        "extra"
+    }
 end
 
 return env

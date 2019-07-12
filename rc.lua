@@ -20,7 +20,7 @@ rules:init({keys = keys})
 
 
 awful.screen.connect_for_each_screen(function(s)
-    awful.tag({"default"}, s, {awful.layout.suit.tile.left})
+    awful.tag(env.tags, s, {awful.layout.suit.tile.left})
 end)
 
 client.connect_signal("mouse::enter", function(c)
