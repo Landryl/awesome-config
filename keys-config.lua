@@ -11,6 +11,8 @@ function keys:init(args)
         -- Awesome management
         awful.key({ mod, "Shift" }, "e", awesome.quit,
                   { description = "Quit Awesome", group = "Awesome"}),
+        awful.key({ mod, "Shift" }, "r", awesome.restart,
+                  { description = "Restart Awesome", group = "Awesome"}),
 
         -- Windows management
         awful.key({ mod }, "j", function () awful.client.focus.byidx(1) end,
