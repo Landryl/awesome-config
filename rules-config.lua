@@ -13,6 +13,7 @@ function rules:init(args)
                 rule = {},
                 properties = {
                     raise = true,
+                    focus = awful.client.focus.filter,
                     keys = clientkeys,
                     buttons = clientbuttons
                 }
