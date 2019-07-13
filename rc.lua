@@ -10,11 +10,11 @@ require("error-handling")
 local env = require("env-config")
 env:init()
 
--- Load global keybindings
+-- Loading global keybindings
 local keys = require("keys-config")
 keys:init({env = env})
 
--- Load rules
+-- Loading rules
 local rules = require("rules-config")
 rules:init({keys = keys})
 
