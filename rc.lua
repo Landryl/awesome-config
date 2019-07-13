@@ -14,14 +14,14 @@ env:init()
 local keys = require("keys-config")
 keys:init({env = env})
 
--- Loading rules
-local rules = require("rules-config")
-rules:init({keys = keys})
-
 -- Loading theme
 local beautiful = require("beautiful")
 local theme = require("themes." .. env.theme .. ".theme")
 beautiful.init(theme)
+
+-- Loading rules
+local rules = require("rules-config")
+rules:init({keys = keys, beautiful=beautiful})
 
 
 local function set_wallpaper(s)
