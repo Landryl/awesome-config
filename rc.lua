@@ -23,6 +23,7 @@ beautiful.init(theme)
 local rules = require("rules-config")
 rules:init({keys = keys, beautiful=beautiful})
 
+local statusbar = require("statusbar")
 
 local function set_wallpaper(s)
     if beautiful.wallpaper then
@@ -38,6 +39,8 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     awful.tag(env.tags, s, {awful.layout.suit.tile.left})
+
+    statusbar:init(s, beautiful)
 
 end)
 

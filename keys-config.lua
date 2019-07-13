@@ -24,7 +24,9 @@ function keys:init(args)
 
         -- Launchers
         awful.key({ mod }, "Return", function () awful.spawn(env.terminal) end,
-                  { description = "Open a terminal", group = "Launcher" })
+                  { description = "Open a terminal", group = "Launcher" }),
+        awful.key({ mod }, "d", function () awful.screen.focused().promptbox:run() end,
+                  { description = "Open prompt", group = "Launcher" })
     )
 
     -- Tags management
