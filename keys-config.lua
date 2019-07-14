@@ -97,7 +97,9 @@ function keys:init(args)
                         c.fullscreen = not c.fullscreen
                         c:raise()
                     end,
-                  {description = "Toggle fullscreen", group = "Client" })
+                  {description = "Toggle fullscreen", group = "Client" }),
+        awful.key({ mod, "Shift" }, "f", awful.client.floating.toggle,
+                  { description = "Toggle floating", group = "Client" })
     )
 
     -- Defining mouse buttons for clients
