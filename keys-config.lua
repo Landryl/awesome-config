@@ -21,6 +21,12 @@ function keys:init(args)
         awful.key({ mod }, "k", function () awful.client.focus.byidx(-1) end,
                   { description = "Focus to previous window by index",
                     group = "Client" }),
+        awful.key({ mod }, "h", function () awful.tag.incmwfact(0.05) end,
+                  { description = "Increase master width factor",
+                    group = "Client" }),
+        awful.key({ mod }, "l", function () awful.tag.incmwfact(-0.05) end,
+                  { description = "Decrease master width factor",
+                    group = "Client" }),
 
         -- Launchers
         awful.key({ mod }, "Return", function () awful.spawn(env.terminal) end,
