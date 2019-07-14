@@ -10,6 +10,11 @@ require("error-handling")
 local env = require("env-config")
 env:init()
 
+-- Autostart
+for i, cmd in ipairs(env.autostart) do
+    awful.spawn(cmd)
+end
+
 -- Loading global keybindings
 local keys = require("keys-config")
 keys:init({env = env})

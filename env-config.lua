@@ -22,6 +22,9 @@ function env:init()
         "background",
         "extra"
     }
+    self.autostart = {
+        "compton"
+    }
 end
 
 return env
