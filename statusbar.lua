@@ -6,11 +6,20 @@ local dpi   = require("beautiful.xresources").apply_dpi
 statusbar = {}
 
 function statusbar:init(s, theme)
+    -- Useful variables
+    local screen_width = awful.screen.focused().geometry.width
+
     -- Create a promptbox for each screen
     s.promptbox = awful.widget.prompt()
 
     -- Create the wibox
-    s.wibox = awful.wibar({ position = "top", screen = s, height = dpi(21) })
+    s.wibox = awful.wibar({
+        position = "top",
+        screen = s,
+        height = dpi(21),
+        stretch = false,
+        width = screen_width - dpi(10),
+    })
 
     -- Add widgets to the wibox
     s.wibox:setup {
