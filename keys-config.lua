@@ -91,7 +91,13 @@ function keys:init(args)
     -- Defining keybinding for clients
     self.clientkeys = gears.table.join(
         awful.key({ mod, "Shift" }, "a", function(c) c:kill() end,
-                  { description = "Close client", group = "Client" })
+                  { description = "Close client", group = "Client" }),
+        awful.key({ mod }, "f",
+                    function(c)
+                        c.fullscreen = not c.fullscreen
+                        c:raise()
+                    end,
+                  {description = "Toggle fullscreen", group = "Client" })
     )
 
     -- Defining mouse buttons for clients
