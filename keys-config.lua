@@ -14,19 +14,19 @@ function keys:init(args)
         awful.key({ mod, "Shift" }, "r", awesome.restart,
                   { description = "Restart Awesome", group = "Awesome"}),
 
-        -- Windows management
+        -- Layout management
         awful.key({ mod }, "j", function () awful.client.focus.byidx(1) end,
                   { description = "Focus to next window by index",
-                    group = "Client" }),
+                    group = "Layout" }),
         awful.key({ mod }, "k", function () awful.client.focus.byidx(-1) end,
                   { description = "Focus to previous window by index",
-                    group = "Client" }),
+                    group = "Layout" }),
         awful.key({ mod }, "h", function () awful.tag.incmwfact(0.05) end,
                   { description = "Increase master width factor",
-                    group = "Client" }),
+                    group = "Layout" }),
         awful.key({ mod }, "l", function () awful.tag.incmwfact(-0.05) end,
                   { description = "Decrease master width factor",
-                    group = "Client" }),
+                    group = "Layout" }),
 
         -- Launchers
         awful.key({ mod }, "Return", function () awful.spawn(env.terminal) end,
@@ -47,7 +47,7 @@ function keys:init(args)
                              tag:view_only()
                           end
                       end,
-                      {description = "view tag #"..i, group = "tag"}),
+                      {description = "View tag #"..i, group = "Tag"}),
             -- Toggle tag display.
             awful.key({ mod, "Control" }, "#" .. i + 9,
                       function ()
@@ -57,7 +57,7 @@ function keys:init(args)
                              awful.tag.viewtoggle(tag)
                           end
                       end,
-                      {description = "toggle tag #" .. i, group = "tag"}),
+                      {description = "Toggle tag #" .. i, group = "Tag"}),
             -- Move client to tag.
             awful.key({ mod, "Shift" }, "#" .. i + 9,
                       function ()
@@ -68,8 +68,8 @@ function keys:init(args)
                               end
                           end
                       end,
-                      {description = "move focused client to tag #"..i,
-                       group = "tag"}),
+                      {description = "Move focused client to tag #"..i,
+                       group = "Tag"}),
             -- Toggle tag on focused client.
             awful.key({ mod, "Control", "Shift" }, "#" .. i + 9,
                       function ()
@@ -80,8 +80,8 @@ function keys:init(args)
                               end
                           end
                       end,
-                      {description = "toggle focused client on tag #" .. i,
-                       group = "tag"})
+                      {description = "Toggle focused client on tag #" .. i,
+                       group = "Tag"})
         )
     end
 
