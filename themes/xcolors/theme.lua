@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
 -- xcolors is a theme that extracts all it's colors from Xresources --
 ----------------------------------------------------------------------
-local xconfig = require("lib.xconfig")
+local xconfig = require("lib.xconfig").get_current_theme()
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 

@@ -66,4 +66,4 @@ function xconfig.get_current_theme()
     return colors
 end
 
-return xconfig.get_current_theme()
+return xconfig
