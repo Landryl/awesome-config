@@ -13,6 +13,14 @@ function keys:init(args)
                   { description = "Quit Awesome", group = "Awesome"}),
         awful.key({ mod, "Shift" }, "r", awesome.restart,
                   { description = "Restart Awesome", group = "Awesome"}),
+        awful.key({ mod }, "p",
+                    function()
+                        screen.emit_signal("theme::set", "base16-gruvbox")
+                    end),
+        awful.key({ mod }, "o",
+                    function()
+                        screen.emit_signal("theme::set", "base16-default")
+                    end),
 
         -- Layout management
         awful.key({ mod }, "j", function () awful.client.focus.byidx(1) end,

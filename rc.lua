@@ -42,11 +42,24 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
 
     set_wallpaper(s)
+    screen.connect_signal("theme::update", function()
+        set_wallpaper(s)
+    end)
 
     awful.tag(env.tags, s, {awful.layout.suit.tile.left})
 
     statusbar:init(s, beautiful)
+    screen.connect_signal("theme::update", function()
+        statusbar:recolor(s)
+    end)
 
+end)
+
+screen.connect_signal("theme::set", function(name)
+    local theme = loadfile(env.themesdir .. "/" .. name .. "/theme.lua")()
+    os.execute(theme.autorun)
+    beautiful.init(theme)
+    screen.emit_signal("theme::update")
 end)
 
 client.connect_signal("mouse::enter", function(c)

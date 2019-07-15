@@ -1,8 +1,6 @@
 -- Get theme directory from env
 local env = require("env-config")
 
-os.execute("xrdb -merge " .. env.themesdir .. "/base16-default/Xresources")
-
 local base00 = "#181818"
 local base01 = "#282828"
 local base02 = "#383838"
@@ -50,5 +48,6 @@ theme:reload({
 })
 
 theme.wallpaper = env.themesdir .. "/base16-default/wallpaper.png"
+theme.autorun = "xrdb -merge " .. env.themesdir .. "/base16-default/Xresources"
 
 return theme

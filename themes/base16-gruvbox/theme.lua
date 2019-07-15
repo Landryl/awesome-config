@@ -1,8 +1,6 @@
 -- Get theme directory from env
 local env = require("env-config")
 
-os.execute("xrdb -merge " .. env.themesdir .. "/base16-gruvbox/Xresources")
-
 local base00 = "#1d2021"
 local base01 = "#3c3836"
 local base02 = "#504945"
@@ -50,5 +48,6 @@ theme:reload({
 })
 
 theme.wallpaper = env.themesdir .. "/base16-gruvbox/wallpaper.png"
+theme.autorun = "xrdb -merge " .. env.themesdir .. "/base16-gruvbox/Xresources"
 
 return theme
