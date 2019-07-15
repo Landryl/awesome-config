@@ -1,25 +1,30 @@
-----------------------------------------------------------------------
--- xcolors is a theme that extracts all it's colors from Xresources --
-----------------------------------------------------------------------
-local xconfig = require("lib.xconfig").get_current_theme()
+---------------------------------------------------------------------
+-- xcolors is a theme that extracts all its colors from Xresources --
+---------------------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local theme = {}
 
-theme.font      = "SauceCodePro Nerd Font Mono 12"
+function theme:reload()
+    local xconfig = require("lib.xconfig").get_current_theme()
 
-theme.bg_normal     = xconfig["color18"]
-theme.bg_focus      = xconfig["color19"]
-theme.bg_urgent     = xconfig["color01"]
+    self.font      = "SauceCodePro Nerd Font Mono 12"
 
-theme.fg_normal     = xconfig["foreground"]
-theme.fg_focus      = xconfig["color07"]
-theme.fg_urget      = xconfig["foreground"]
+    self.bg_normal     = xconfig["color18"]
+    self.bg_focus      = xconfig["color19"]
+    self.bg_urgent     = xconfig["color01"]
 
-theme.useless_gap   = dpi(3)
-theme.border_width  = dpi(0)
-theme.border_normal = xconfig["color18"]
-theme.border_focus  = xconfig["color19"]
+    self.fg_normal     = xconfig["foreground"]
+    self.fg_focus      = xconfig["color07"]
+    self.fg_urget      = xconfig["foreground"]
+
+    self.useless_gap   = dpi(3)
+    self.border_width  = dpi(0)
+    self.border_normal = xconfig["color18"]
+    self.border_focus  = xconfig["color19"]
+end
+
+theme:reload()
 
 return theme
