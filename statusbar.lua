@@ -13,7 +13,7 @@ function statusbar:init(s, theme)
     s.promptbox = awful.widget.prompt()
 
     -- Create the wibox
-    s.wibox = awful.wibar({
+    s.statusbar = awful.wibar({
         position = "top",
         screen = s,
         height = dpi(21),
@@ -22,7 +22,7 @@ function statusbar:init(s, theme)
     })
 
     -- Add widgets to the wibox
-    s.wibox:setup {
+    s.statusbar:setup {
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
@@ -40,8 +40,8 @@ end
 
 function statusbar:recolor(s)
     local beautiful = require("beautiful")
-    s.wibox.bg = beautiful.bg_normal
-    s.wibox.fg = beautiful.fg_normal
+    s.statusbar.bg = beautiful.bg_normal
+    s.statusbar.fg = beautiful.fg_normal
     s.promptbox.bg = beautiful.bg_normal
     s.promptbox.fg = beautiful.fg_normal
 end
