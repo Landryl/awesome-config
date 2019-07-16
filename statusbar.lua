@@ -42,6 +42,8 @@ function statusbar:recolor(s)
     local beautiful = require("beautiful")
     s.wibox.bg = beautiful.bg_normal
     s.wibox.fg = beautiful.fg_normal
+    s.promptbox.bg = beautiful.bg_normal
+    s.promptbox.fg = beautiful.fg_normal
 end
 
 return statusbar
