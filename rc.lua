@@ -62,6 +62,12 @@ screen.connect_signal("theme::set", function(name)
     screen.emit_signal("theme::update")
 end)
 
+-- Send a SIGHUP to Urxvt instances to reload color scheme when a new theme
+-- is applied
+screen.connect_signal("theme::update", function()
+    awful.spawn.with_shell("for pid in `ps -C urxvt | tail --lines=+2 | grep -Po ^\\ \\*\\[0-9\\]+`; do kill -s HUP $pid \n done")
+end)
+
 client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
