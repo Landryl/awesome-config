@@ -35,6 +35,10 @@ function keys:init(args)
         awful.key({ mod }, "l", function () awful.tag.incmwfact(-0.05) end,
                   { description = "Decrease master width factor",
                     group = "Layout" }),
+        awful.key({ mod, "Shift" }, "j", function() awful.client.swap.byidx(1) end,
+                  { description = "Swap client with next by index", group = "Layout" }),
+        awful.key({ mod, "Shift" }, "k", function() awful.client.swap.byidx(-1) end,
+                  { description = "Swap client with next by index", group = "Layout" }),
 
         -- Launchers
         awful.key({ mod }, "Return", function () awful.spawn(env.terminal) end,
