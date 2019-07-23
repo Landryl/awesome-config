@@ -49,9 +49,11 @@ function popupmenu:new(args)
     awful.keygrabber {
         keybindings = {
             {{ }, "j", function() self.pick(self, self.selected + 1) end},
-            {{ }, "k", function() self.pick(self, self.selected - 1) end}
+            {{ }, "Down", function() self.pick(self, self.selected + 1) end},
+            {{ }, "k", function() self.pick(self, self.selected - 1) end},
+            {{ }, "Up", function() self.pick(self, self.selected - 1) end},
         },
-        stop_key      = "Escape",
+        stop_key      = "Return",
         stop_event    = "release",
         stop_callback =  function() self.popup.visible = false end,
         start_callback = function() self.popup.visible = true end,
