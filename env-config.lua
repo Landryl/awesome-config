@@ -11,6 +11,7 @@ function env:init()
     self.editor_cmd = self.terminal .. " -e " .. self.editor
     self.home = os.getenv("HOME")
     self.themesdir = self.home .. "/.config/awesome/themes"
+    self.themeslist = require("themes.list")
     self.tags = {
         "terms",
         "web",

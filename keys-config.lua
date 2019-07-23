@@ -13,13 +13,28 @@ function keys:init(args)
                   { description = "Quit Awesome", group = "Awesome"}),
         awful.key({ mod, "Shift" }, "r", awesome.restart,
                   { description = "Restart Awesome", group = "Awesome"}),
-        awful.key({ mod }, "p",
+        awful.key({ mod }, "t",
                     function()
-                        screen.emit_signal("theme::set", "base16-gruvbox")
-                    end),
-        awful.key({ mod }, "o",
-                    function()
-                        screen.emit_signal("theme::set", "base16-default")
+                        local menu = require("lib.popupmenu")
+                        local items = {}
+                        local selected = 1
+                        for i,theme in ipairs(env.themeslist) do
+                            items[#items + 1] = {
+                                text = theme,
+                                action = function()
+                                    screen.emit_signal("theme::set", theme)
+                                    menu:recolor()
+                                    env.theme = theme
+                                end
+                            }
+                            if env.theme == theme then
+                                selected = i
+                            end
+                        end
+                        menu:new({
+                            items = items,
+                            selected = selected
+                        })
                     end),
 
         -- Layout management
