@@ -1,22 +1,22 @@
 -- Get theme directory from env
 local env = require("env-config")
 
-local base00 = "#1d2021"
-local base01 = "#3c3836"
-local base02 = "#504945"
-local base03 = "#665c54"
-local base04 = "#bdae93"
-local base05 = "#d5c4a1"
-local base06 = "#ebdbb2"
-local base07 = "#fbf1c7"
-local base08 = "#fb4934"
-local base09 = "#fe8019"
-local base0A = "#fabd2f"
-local base0B = "#b8bb26"
-local base0C = "#8ec07c"
-local base0D = "#83a598"
-local base0E = "#d3869b"
-local base0F = "#d65d0e"
+local base00 = "#000000"
+local base01 = "#121212"
+local base02 = "#222222"
+local base03 = "#333333"
+local base04 = "#999999"
+local base05 = "#c1c1c1"
+local base06 = "#999999"
+local base07 = "#c1c1c1"
+local base08 = "#5f8787"
+local base09 = "#aaaaaa"
+local base0A = "#e78a53"
+local base0B = "#fbcb97"
+local base0C = "#aaaaaa"
+local base0D = "#888888"
+local base0E = "#999999"
+local base0F = "#444444"
 
 local theme = require("themes.xcolors.theme")
 theme:reload({
@@ -47,7 +47,7 @@ theme:reload({
     color21     = base06
 })
 
-theme.wallpaper = env.themesdir .. "/base16-gruvbox/wallpaper.png"
-theme.autorun = "xrdb -merge " .. env.themesdir .. "/base16-gruvbox/Xresources"
+theme.wallpaper = env.themesdir .. "/black-metal-bathory/wallpaper.png"
+theme.autorun = "xrdb -merge " .. env.themesdir .. "/black-metal-bathory/Xresources"
 
 return theme

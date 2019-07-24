@@ -6,7 +6,7 @@ local env = {}
 function env:init()
     self.modkey = "Mod1"
     self.terminal = "urxvt"
-    self.theme = "base16-default"
+    self.theme = "default"
     self.editor = os.getenv("EDITOR") or "nano"
     self.editor_cmd = self.terminal .. " -e " .. self.editor
     self.home = os.getenv("HOME")

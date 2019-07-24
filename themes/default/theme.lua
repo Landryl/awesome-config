@@ -47,7 +47,7 @@ theme:reload({
     color21     = base06
 })
 
-theme.wallpaper = env.themesdir .. "/base16-default/wallpaper.png"
-theme.autorun = "xrdb -merge " .. env.themesdir .. "/base16-default/Xresources"
+theme.wallpaper = env.themesdir .. "/default/wallpaper.png"
+theme.autorun = "xrdb -merge " .. env.themesdir .. "/default/Xresources"
 
 return theme
