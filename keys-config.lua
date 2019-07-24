@@ -49,6 +49,8 @@ function keys:init(args)
                             left = s.padding.left + 10,
                             right = s.padding.right + 10
                         }
+                        -- See statusbar.lua to understand this hacky thing
+                        screen.emit_signal("property::padding")
                     end,
                   { description = "Increase screen padding", group = "Theme"}),
         awful.key({ mod, "Shift" }, "l",
@@ -60,6 +62,7 @@ function keys:init(args)
                             left = s.padding.left - 10,
                             right = s.padding.right - 10
                         }
+                        screen.emit_signal("property::padding")
                     end,
                   { description = "Decrease screen padding", group = "Theme"}),
 

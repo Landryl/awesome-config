@@ -6,9 +6,6 @@ local dpi   = require("beautiful.xresources").apply_dpi
 statusbar = {}
 
 function statusbar:init(s, theme)
-    -- Useful variables
-    local screen_width = awful.screen.focused().geometry.width
-
     -- Create a promptbox for each screen
     s.promptbox = awful.widget.prompt()
 
@@ -18,7 +15,7 @@ function statusbar:init(s, theme)
         screen = s,
         height = dpi(21),
         stretch = false,
-        width = screen_width - dpi(10),
+        width = s.geometry.width - dpi(10),
     })
 
     -- Add widgets to the wibox
@@ -36,6 +33,14 @@ function statusbar:init(s, theme)
             wibox.widget.textclock(),
         },
     }
+
+    -- Not the best way, but s.connect_signal don't accept a function as #2
+    -- argument for some reason, despite the documentation stating otherwise
+    -- Might be a bad understanding from me.
+    screen.connect_signal("property::padding", function()
+        scr = awful.screen.focused()
+        scr.statusbar.width = scr.geometry.width - dpi(10) - scr.padding.left - scr.padding.right
+    end)
 end
 
 function statusbar:recolor(s)
