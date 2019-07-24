@@ -19,11 +19,13 @@
 #define base0F #9c637a
 
 *foreground:   base07
+URxvt.cursor:  base05
 #ifdef background_opacity
 *background:   [background_opacity]base00
 #else
 *background:   base00
 #endif
+URxvt.border:  base00
 *cursorColor:  base07
 
 *color0:       base00
