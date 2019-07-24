@@ -13,6 +13,8 @@ function keys:init(args)
                   { description = "Quit Awesome", group = "Awesome"}),
         awful.key({ mod, "Shift" }, "r", awesome.restart,
                   { description = "Restart Awesome", group = "Awesome"}),
+
+        -- Styling management
         awful.key({ mod }, "t",
                     function()
                         local menu = require("lib.popupmenu")
@@ -35,7 +37,31 @@ function keys:init(args)
                             items = items,
                             selected = selected
                         })
-                    end),
+                    end,
+                  { description = "Open color scheme switcher",
+                    group = "Theme"}),
+        awful.key({ mod, "Shift" }, "h",
+                    function()
+                        s = awful.screen.focused()
+                        s.padding = {
+                            top = s.padding.top,
+                            bottom = s.padding.bottom,
+                            left = s.padding.left + 10,
+                            right = s.padding.right + 10
+                        }
+                    end,
+                  { description = "Increase screen padding", group = "Theme"}),
+        awful.key({ mod, "Shift" }, "l",
+                    function()
+                        s = awful.screen.focused()
+                        s.padding = {
+                            top = s.padding.top,
+                            bottom = s.padding.bottom,
+                            left = s.padding.left - 10,
+                            right = s.padding.right - 10
+                        }
+                    end,
+                  { description = "Decrease screen padding", group = "Theme"}),
 
         -- Layout management
         awful.key({ mod }, "j", function () awful.client.focus.byidx(1) end,
