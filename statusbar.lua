@@ -3,12 +3,19 @@ local awful = require("awful")
 local wibox = require("wibox")
 local dpi   = require("beautiful.xresources").apply_dpi
 local utils = require("lib.utils")
+local beautiful = require("beautiful")
 
 statusbar = {}
 
 function statusbar:init(s, theme)
     -- Create a promptbox for each screen
-    s.promptbox = awful.widget.prompt()
+    s.promptbox = awful.widget.prompt({
+        prompt = " ",
+        bg = beautiful.fg_normal,
+        bg_cursor = beautiful.fg_normal,
+        fg = beautiful.bg_normal,
+        fg_cursor = beautiful.bg_normal
+    })
 
     -- Create the wibox
     s.statusbar = awful.wibar({
@@ -61,19 +68,29 @@ function statusbar:init(s, theme)
     -- Add widgets to the wibox
     s.statusbar:setup {
         layout = wibox.layout.align.horizontal,
+        expand = "outside",
         { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+        },
+        { -- Middle widgets
             layout = wibox.layout.fixed.horizontal,
             s.promptbox,
         },
-        { -- Middle widgets
-            layout = wibox.layout.fixed.horizontal
-        },
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            s.separator,
-            s.battery,
-            s.separator,
-            wibox.widget.textclock(),
+            layout = wibox.layout.align.horizontal,
+            {
+                layout = wibox.layout.fixed.horizontal,
+            },
+            {
+                layout = wibox.layout.fixed.horizontal,
+            },
+            {
+                layout = wibox.layout.fixed.horizontal,
+                s.separator,
+                s.battery,
+                s.separator,
+                wibox.widget.textclock(),
+            }
         },
     }
 
@@ -90,8 +107,10 @@ function statusbar:recolor(s)
     local beautiful = require("beautiful")
     s.statusbar.bg = beautiful.bg_normal
     s.statusbar.fg = beautiful.fg_normal
-    s.promptbox.bg = beautiful.bg_normal
-    s.promptbox.fg = beautiful.fg_normal
+    s.promptbox.bg = beautiful.fg_normal
+    s.promptbox.bg_cursor = beautiful.fg_normal
+    s.promptbox.fg = beautiful.bg_normal
+    s.promptbox.fg_cursor = beautiful.bg_normal
 end
 
 return statusbar
