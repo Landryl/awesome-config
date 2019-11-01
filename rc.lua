@@ -25,6 +25,9 @@ function loadtheme(name)
     local theme = loadfile(env.themesdir .. "/" .. name .. "/theme.lua")()
     os.execute(theme.autorun)
     awful.spawn.with_shell("for pid in `ps -C urxvt | tail --lines=+2 | grep -Po ^\\ \\*\\[0-9\\]+`; do kill -s HUP $pid \n done")
+    if env.wallpaper then
+        theme.wallpaper = env.wallpaper
+    end
     beautiful.init(theme)
 end
 loadtheme(env.theme)
