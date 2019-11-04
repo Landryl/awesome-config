@@ -3,6 +3,7 @@ return {
     "gruvbox",
     "chalk",
     "black-metal-bathory",
-    "sulphurpool-light",
     "atlas",
+    "horizon",
+    "sulphurpool-light",
 }
