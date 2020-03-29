@@ -1,5 +1,6 @@
 local gears = require("gears")
 local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
 
 keys = {}
 
@@ -112,7 +113,11 @@ function keys:init(args)
         awful.key({ }, "XF86AudioMute",
             function()
                 awful.spawn("pactl set-sink-mute 0 toggle")
-            end)
+            end),
+
+        -- Help menu
+        awful.key({ mod }, "s", hotkeys_popup.show_help,
+        {description="Show help", group="Launcher" })
     )
 
     -- Tags management
@@ -126,8 +131,7 @@ function keys:init(args)
                           if tag then
                              tag:view_only()
                           end
-                      end,
-                      {description = "View tag #"..i, group = "Tag"}),
+                      end),
             -- Toggle tag display.
             awful.key({ mod, "Control" }, "#" .. i + 9,
                       function ()
@@ -136,8 +140,7 @@ function keys:init(args)
                           if tag then
                              awful.tag.viewtoggle(tag)
                           end
-                      end,
-                      {description = "Toggle tag #" .. i, group = "Tag"}),
+                      end),
             -- Move client to tag.
             awful.key({ mod, "Shift" }, "#" .. i + 9,
                       function ()
@@ -147,9 +150,7 @@ function keys:init(args)
                                   client.focus:move_to_tag(tag)
                               end
                           end
-                      end,
-                      {description = "Move focused client to tag #"..i,
-                       group = "Tag"}),
+                      end),
             -- Toggle tag on focused client.
             awful.key({ mod, "Control", "Shift" }, "#" .. i + 9,
                       function ()
@@ -159,9 +160,7 @@ function keys:init(args)
                                   client.focus:toggle_tag(tag)
                               end
                           end
-                      end,
-                      {description = "Toggle focused client on tag #" .. i,
-                       group = "Tag"})
+                      end)
         )
     end
 
