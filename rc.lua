@@ -7,7 +7,7 @@ require("awful.autofocus")
 require("error-handling")
 
 -- Loading environnement
-local env = require("env-config")
+env = require("env-config")
 env:init()
 
 -- Autostart
@@ -17,7 +17,7 @@ end
 
 -- Loading global keybindings
 local keys = require("keys-config")
-keys:init({env = env})
+keys:init()
 
 -- Loading theme
 local beautiful = require("beautiful")
@@ -34,8 +34,9 @@ loadtheme(env.theme)
 
 -- Loading rules
 local rules = require("rules-config")
-rules:init({keys = keys, beautiful=beautiful})
+rules:init({keys = keys, beautiful = beautiful})
 
+-- Configuring screens
 local statusbar = require("statusbar")
 
 local function set_wallpaper(s)
@@ -48,21 +49,18 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-
     set_wallpaper(s)
+    awful.tag(env.tags, s, {awful.layout.suit.tile.left})
+    statusbar:init(s, beautiful)
+
+    -- Adding a signal handler for each individual screen
     screen.connect_signal("theme::update", function()
         set_wallpaper(s)
-    end)
-
-    awful.tag(env.tags, s, {awful.layout.suit.tile.left})
-
-    statusbar:init(s, beautiful)
-    screen.connect_signal("theme::update", function()
         statusbar:recolor(s)
     end)
-
 end)
 
+-- Signal handling
 screen.connect_signal("theme::set", function(name)
     loadtheme(name)
     screen.emit_signal("theme::update")

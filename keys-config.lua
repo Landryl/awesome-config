@@ -1,11 +1,11 @@
 local gears = require("gears")
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
+local theme_switcher = require("theme-switcher")
 
-keys = {}
+local keys = {}
 
-function keys:init(args)
-    local env = args.env
+function keys:init()
     local mod = env.modkey
 
     globalkeys = gears.table.join(
@@ -16,31 +16,10 @@ function keys:init(args)
                   { description = "Restart Awesome", group = "Awesome"}),
 
         -- Styling management
-        awful.key({ mod }, "t",
-                    function()
-                        local menu = require("lib.popupmenu")
-                        local items = {}
-                        local selected = 1
-                        for i,theme in ipairs(env.themeslist) do
-                            items[#items + 1] = {
-                                text = theme,
-                                action = function()
-                                    screen.emit_signal("theme::set", theme)
-                                    menu:recolor()
-                                    env.theme = theme
-                                end
-                            }
-                            if env.theme == theme then
-                                selected = i
-                            end
-                        end
-                        menu:new({
-                            items = items,
-                            selected = selected
-                        })
-                    end,
+        awful.key({ mod }, "t", function() theme_switcher.launch(env) end,
                   { description = "Open color scheme switcher",
                     group = "Theme"}),
+
         awful.key({ mod, "Shift" }, "h",
                     function()
                         s = awful.screen.focused()
@@ -54,6 +33,7 @@ function keys:init(args)
                         screen.emit_signal("property::padding")
                     end,
                   { description = "Increase screen padding", group = "Theme"}),
+
         awful.key({ mod, "Shift" }, "l",
                     function()
                         s = awful.screen.focused()
