@@ -27,8 +27,9 @@ function theme:reload(theme)
     self.border_normal = theme.color18
     self.border_focus  = theme.color19
 
-    self.notification_icon_size = dpi(120)
-    self.notification_max_width = dpi(800)
+    self.notification_icon_size = dpi(100)
+    self.notification_max_width = dpi(600)
+    self.notification_width     = dpi(600)
 end
 
 return theme
