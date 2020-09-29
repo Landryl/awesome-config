@@ -24,7 +24,7 @@ function env:init()
         "extra"
     }
     self.autostart = {
-        "compton"
+        "picom --config " .. self.home .. "/.config/picom/picom.conf"
     }
 end
 
