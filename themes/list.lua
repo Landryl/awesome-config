@@ -6,4 +6,5 @@ return {
     "atlas",
     "horizon",
     "sulphurpool-light",
+    "gruvbox-light",
 }
