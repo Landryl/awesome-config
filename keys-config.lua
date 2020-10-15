@@ -66,7 +66,8 @@ function keys:init()
                   { description = "Swap client with next by index", group = "Layout" }),
 
         -- Launchers
-        awful.key({ mod }, "Return", function () awful.spawn(env.terminal) end,
+        awful.key({ mod }, "Return", function () awful.spawn(env.terminal,
+                    { screen = awful.screen.focused() }) end,
                   { description = "Open a terminal", group = "Launcher" }),
         awful.key({ mod }, "d", function () awful.screen.focused().promptbox:run() end,
                   { description = "Open prompt", group = "Launcher" }),
