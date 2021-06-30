@@ -85,15 +85,15 @@ function keys:init()
         -- Sound
         awful.key({ }, "XF86AudioRaiseVolume",
             function()
-                awful.spawn("pactl set-sink-volume 0 +5%")
+                awful.spawn("pactl set-sink-volume 2 +5%")
             end),
         awful.key({ }, "XF86AudioLowerVolume",
             function()
-                awful.spawn("pactl set-sink-volume 0 -5%")
+                awful.spawn("pactl set-sink-volume 2 -5%")
             end),
         awful.key({ }, "XF86AudioMute",
             function()
-                awful.spawn("pactl set-sink-mute 0 toggle")
+                awful.spawn("pactl set-sink-mute 2 toggle")
             end),
 
         -- Help menu
