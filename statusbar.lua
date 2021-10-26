@@ -113,4 +113,14 @@ function statusbar:recolor(s)
     s.promptbox.fg_cursor = beautiful.bg_normal
 end
 
+function statusbar:toggle(s)
+    if s.statusbar.y >= 0 then
+        s.statusbar.y = -20
+        s.statusbar.height = 1
+    else
+        s.statusbar.y = 0
+        s.statusbar.height = 20
+    end
+end
+
 return statusbar

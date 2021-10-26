@@ -15,6 +15,12 @@ function keys:init()
         awful.key({ mod, "Shift" }, "r", awesome.restart,
                   { description = "Restart Awesome", group = "Awesome"}),
 
+        awful.key({ mod, "Shift" }, "o",
+                    function()
+                        screen.emit_signal("statusbar::toggle")
+                    end,
+                    { description = "Toggle status bar", group = "Awesome"}),
+
         -- Styling management
         awful.key({ mod }, "t", function() theme_switcher.launch(env) end,
                   { description = "Open color scheme switcher",

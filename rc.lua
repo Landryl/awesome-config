@@ -58,6 +58,10 @@ awful.screen.connect_for_each_screen(function(s)
         set_wallpaper(s)
         statusbar:recolor(s)
     end)
+
+    screen.connect_signal("statusbar::toggle", function()
+        statusbar:toggle(s)
+    end)
 end)
 
 -- Signal handling
